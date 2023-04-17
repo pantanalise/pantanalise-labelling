@@ -42,7 +42,7 @@
             font-size: 16px;
             cursor: pointer;
             transition: all 0.3s ease-in-out;
-            width: 100px;
+            width: 150px;
         }
 
         .button-group input[type="submit"][name="neg"] {
@@ -80,6 +80,8 @@
         {% csrf_token %}
         <p class="current-text"><b>Text:</b> {{ current_text }}</p>
         <p class="feeling"><b>Feeling:</b> {{ current_feeling }}</p>
+        <p class="feeling"><b>Index:</b> {{ current_index }}</p>
+
         <input type="hidden" name="current_index" value="{{ current_index }}">
         <div class="button-group">
             <input type="submit" name="neg" value="Negative">
@@ -89,6 +91,12 @@
         <div class="button-group">
             <input type="submit" name="prev" value="Previous">
             <input type="submit" name="next" value="Next">
+
+        </div>
+        <div class="button-group">
+            <input type="number" class="form-control" name="current_index" min="1" max="{{max_rows}}"
+                value="{{ current_index }}">
+            <input type="submit" value="Update Row">
         </div>
     </form>
 </body>

@@ -28,7 +28,7 @@ def index(request):
             current_row = worksheet.cell(row=current_index, column=1)
             current_text = current_row.offset(column=1).value
             current_feeling = current_row.offset(column=4).value
-            
+
         elif request.POST.get('neg'):
             current_row.offset(column=4).value = 'Neg'
             workbook.save(xlsx_file)
@@ -44,4 +44,4 @@ def index(request):
             workbook.save(xlsx_file)
             current_feeling = 'Pos'
 
-    return render(request, 'index.html', {'current_index': current_index, 'current_text': current_text, 'current_feeling': current_feeling})
+    return render(request, 'index.html', {'current_index': current_index, 'current_text': current_text, 'current_feeling': current_feeling, 'max_rows':max_rows})

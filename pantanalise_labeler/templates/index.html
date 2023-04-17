@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Labeler</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #1d1d1d;
+            color: #f9f9f9;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #2b2b2b;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 60%;
+            min-height: 500px;
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: center;
+            margin: 10px 0;
+        }
+
+        .button-group input[type="submit"] {
+            margin: 5px;
+            background-color: #1e90ff;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            width: 100px;
+        }
+
+        .button-group input[type="submit"][name="neg"] {
+            background-color: #ff4136;
+        }
+
+        .button-group input[type="submit"][name="neu"] {
+            background-color: gray;
+        }
+
+        .button-group input[type="submit"][name="pos"] {
+            background-color: #2ecc40;
+        }
+
+        p.current-text {
+            height: 150px;
+            overflow: auto;
+            font-size: 18px;
+            font-weight: bold;
+            margin: 0;
+            width: 100%;
+        }
+
+        p.feeling {
+            margin: 10px 0;
+            font-size: 16px;
+            font-weight: bold;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <form method="POST">
+        {% csrf_token %}
+        <p class="current-text"><b>Text:</b> {{ current_text }}</p>
+        <p class="feeling"><b>Feeling:</b> {{ current_feeling }}</p>
+        <input type="hidden" name="current_index" value="{{ current_index }}">
+        <div class="button-group">
+            <input type="submit" name="neg" value="Negative">
+            <input type="submit" name="neu" value="Neutral">
+            <input type="submit" name="pos" value="Positive">
+        </div>
+        <div class="button-group">
+            <input type="submit" name="prev" value="Previous">
+            <input type="submit" name="next" value="Next">
+        </div>
+    </form>
+</body>
+
+</html>

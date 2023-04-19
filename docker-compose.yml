@@ -1,0 +1,9 @@
+services:
+  labeler:
+    build:
+      context: .
+      dockerfile: dockerfile
+    volumes:
+      - .:/app
+    ports:
+      - '8234:8000'

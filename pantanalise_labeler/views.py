@@ -1,6 +1,10 @@
 from django.shortcuts import render
 import openpyxl
-xlsx_file = '../pantanalise_labeler/pantanalise_labeler/data/data.xlsx'
+from os import path
+
+
+absolute_path = path.dirname(__file__)
+xlsx_file = path.join(absolute_path, 'data/data.xlsx')
 
 workbook = openpyxl.load_workbook(xlsx_file)
 worksheet = workbook.active
